@@ -100,6 +100,10 @@ class BitmapEditor
     arg =~ /[[:alpha:]]/
   end
 
+  def check_order_of_coordinates(arg1, arg2)
+    fail "Invalid order of arguments, the end of the segment (#{arg2}) must be greater than its beginning (#{arg1})" unless arg1.to_i < arg2.to_i 
+  end
+
   def bitmap_exists?
     fail "There's no image" unless @bitmap
   end
@@ -110,6 +114,7 @@ class BitmapEditor
     coordinates = [args[0],args[1],args[2]]
     color = args[3]
     coordinates.each { |arg| check_arg_is_numeric(arg) }
+    check_order_of_coordinates(args[1],args[2])
     check_arg_is_color(color)
   end
 end

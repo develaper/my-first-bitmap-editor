@@ -33,13 +33,15 @@ class BitmapEditor
       check_number_of_args(args, 3)
       coordinates = [args[0],args[1]]
       color = args[2]
-      coordinates.each do |arg|
-        check_arg_is_numeric(arg)
-      end
+      coordinates.each {|arg| check_arg_is_numeric(arg)}
       check_arg_is_color(color)
-
       @bitmap.set_color(*args)
-
+    when 'V'
+      before_draw_segment(args)
+      @bitmap.draw_vertical_segment!(*args)
+    when 'H'
+      before_draw_segment(args)
+      @bitmap.draw_horizontal_segment!(*args)
     when 'S'
         puts "There is no image"
     else
@@ -98,5 +100,14 @@ class BitmapEditor
 
   def bitmap_exists?
     fail "There's no image" unless @bitmap
+  end
+
+  def before_draw_segment(args)
+    bitmap_exists?
+    check_number_of_args(args, 4)
+    coordinates = [args[0],args[1],args[2]]
+    color = args[3]
+    coordinates.each { |arg| check_arg_is_numeric(arg) }
+    check_arg_is_color(color)
   end
 end

@@ -41,4 +41,11 @@ describe Bitmap do
 			expect(bitmap.column_in_range?(5)).to be_truthy
 		end
 	end
+
+	context 'display' do
+		it 'returns a visual representation' do
+			bitmap = Bitmap.new(2, 2)
+			expect(bitmap.display).to eq("OO\n"+"OO\n")
+		end
+	end
 end

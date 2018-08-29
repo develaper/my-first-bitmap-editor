@@ -14,6 +14,12 @@ class Bitmap
 		end
 	end
 
+	def display
+		str = ""
+		@bitmap.each{ |row| str += row.join("") + "\n" }
+		str
+	end
+
 	def row_in_range?(n)
 		n.to_i.between?(1, @rows_number)
 	end

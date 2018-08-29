@@ -73,5 +73,28 @@ describe Bitmap do
 			end
 	end
 
+	context 'draw horizontal segment' do
+			it 'sets color in args' do
+				bitmap = Bitmap.new(5, 5)
+				bitmap.draw_horizontal_segment!(1, 1, 5, 'R')
+				bitmap.draw_horizontal_segment!(3, 1, 4, 'V')
+
+				expect(bitmap[1,2]).to eq('R')
+				expect(bitmap[1,3]).to eq('R')
+				expect(bitmap[1,4]).to eq('R')
+				expect(bitmap[1,5]).to eq('R')
+				expect(bitmap[2,1]).to eq('O')
+				expect(bitmap[2,2]).to eq('O')
+				expect(bitmap[2,3]).to eq('O')
+				expect(bitmap[2,4]).to eq('O')
+				expect(bitmap[2,5]).to eq('O')
+				expect(bitmap[3,1]).to eq('V')
+				expect(bitmap[3,2]).to eq('V')
+				expect(bitmap[3,3]).to eq('V')
+				expect(bitmap[3,4]).to eq('V')
+				expect(bitmap[3,5]).to eq('O')
+			end
+	end
+
 
 end

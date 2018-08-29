@@ -43,7 +43,9 @@ class BitmapEditor
       before_draw_segment(args)
       @bitmap.draw_horizontal_segment!(*args)
     when 'S'
-        puts "There is no image"
+      bitmap_exists?
+      check_number_of_args(args, 0)
+      puts @bitmap.display
     else
         puts 'unrecognised command :('
     end

@@ -36,12 +36,12 @@ describe BitmapEditor do
 	end
 
 	context 'is numeric' do
-		it 'returns nil if the arg is not numeric' do
+		it 'returns false if the arg is not numeric' do
 			bitmap_editor = BitmapEditor.new()
 			expect(bitmap_editor.is_numeric?('D')).to be_falsey
 		end
 
-		it 'returns 0 if the arg is numeric' do
+		it 'returns true if the arg is numeric' do
 			bitmap_editor = BitmapEditor.new()
 			expect(bitmap_editor.is_numeric?('78')).to be_truthy
 		end

@@ -34,3 +34,4 @@ class BitmapEditor
   def is_a_valid_command? (command)
     ['I','C','L','F','V','H','S'].include? command
   end
+end

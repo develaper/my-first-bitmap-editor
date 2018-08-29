@@ -36,6 +36,10 @@ class Bitmap
 		(j.to_i..k.to_i).each { |n| set_color(i.to_i, n, v) }
 	end
 
+	def draw_vertical_segment!(i, j, k, v)
+		(j.to_i..k.to_i).each { |n| set_color(n, i.to_i, v) }
+	end
+
 	def row_in_range?(n)
 		n.to_i.between?(1, @rows_number)
 	end

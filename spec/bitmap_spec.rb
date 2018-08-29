@@ -48,4 +48,14 @@ describe Bitmap do
 			expect(bitmap.display).to eq("OO\n"+"OO\n")
 		end
 	end
+
+	context 'set color' do
+		it 'for a specific pixel' do
+			bitmap = Bitmap.new(2, 2)
+			bitmap.set_color(1, 1, 'V')
+			expect(bitmap[1,1]).to eq('V')
+		end
+	end
+
+	
 end

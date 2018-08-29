@@ -20,6 +20,14 @@ class Bitmap
 		str
 	end
 
+	def set_color(i, j, c)
+		if row_in_range?(i) and column_in_range?(j)
+			@bitmap[i.to_i-1][j.to_i-1] = c
+		else
+			fail "Values out of range"
+		end
+	end
+
 	def row_in_range?(n)
 		n.to_i.between?(1, @rows_number)
 	end

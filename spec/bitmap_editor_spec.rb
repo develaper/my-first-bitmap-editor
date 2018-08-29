@@ -22,5 +22,40 @@ describe BitmapEditor do
 			expect(bitmap_editor.is_a_valid_command?('S')).to be_truthy
 		end
 	end
+
+	context 'valid number of argumentes' do
+		it 'returns false if the number of args is not valid' do
+			bitmap_editor = BitmapEditor.new()
+			expect(bitmap_editor.valid_number_of_args?(["D","D","S"], 2)).to be_falsey
+		end
+
+		it 'returns true if the number of args is valid' do
+			bitmap_editor = BitmapEditor.new()
+			expect(bitmap_editor.valid_number_of_args?(["D","D"], 2)).to be_truthy
+		end
+	end
+
+	context 'is numeric' do
+		it 'returns nil if the arg is not numeric' do
+			bitmap_editor = BitmapEditor.new()
+			expect(bitmap_editor.is_numeric?('D')).to be_nil
+		end
+
+		it 'returns 0 if the arg is numeric' do
+			bitmap_editor = BitmapEditor.new()
+			expect(bitmap_editor.is_numeric?('78')).to eq(0)
+		end
+	end
 	
+	context 'is in range' do
+		it 'returns false if the arg is not in range' do
+			bitmap_editor = BitmapEditor.new()
+			expect(bitmap_editor.is_in_range?('258', 250)).to be_falsey
+		end
+
+		it 'returns true if the arg is in range' do
+			bitmap_editor = BitmapEditor.new()
+			expect(bitmap_editor.is_in_range?('78', 250)).to be_truthy
+		end
+	end
 end	

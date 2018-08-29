@@ -28,6 +28,10 @@ class Bitmap
 		end
 	end
 
+	def clear!
+		@bitmap.each { |row| row.map! { |value| 'O' }}
+	end
+
 	def row_in_range?(n)
 		n.to_i.between?(1, @rows_number)
 	end

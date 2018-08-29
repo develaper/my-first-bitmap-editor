@@ -57,5 +57,21 @@ describe Bitmap do
 		end
 	end
 
-	
+	context 'clear' do
+			it 'has a method that resets al pixels to O' do
+				bitmap = Bitmap.new(2, 2)
+				bitmap.set_color(1, 1, 'V')
+				bitmap.set_color(1, 2, 'V')
+				bitmap.set_color(2, 1, 'V')
+				bitmap.set_color(2, 2, 'V')
+				bitmap.clear!
+
+				expect(bitmap[1,1]).to eq('O')
+				expect(bitmap[1,2]).to eq('O')
+				expect(bitmap[2,1]).to eq('O')
+				expect(bitmap[2,2]).to eq('O')
+			end
+	end
+
+
 end

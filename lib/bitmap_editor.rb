@@ -24,6 +24,21 @@ class BitmapEditor
         check_arg_is_in_range(arg)
       end 
       @bitmap = Bitmap.new(*args)
+    when 'C'
+      bitmap_exists?
+      check_number_of_args(args, 0)
+      @bitmap.clear!
+    when 'L'
+      bitmap_exists?
+      check_number_of_args(args, 3)
+      coordinates = [args[0],args[1]]
+      color = args[2]
+      coordinates.each do |arg|
+        check_arg_is_numeric(arg)
+      end
+      check_arg_is_color(color)
+
+      @bitmap.set_color(*args)
 
     when 'S'
         puts "There is no image"
@@ -71,5 +86,17 @@ class BitmapEditor
 
   def is_in_range? (arg, range)
     arg.to_i.between?(1, range)
+  end
+
+  def check_arg_is_color(arg)
+    fail "Invalid arg: expected a letter, got #{arg}" unless is_a_color?(arg)
+  end
+
+  def is_a_color?(arg)
+    arg =~ /[[:alpha:]]/
+  end
+
+  def bitmap_exists?
+    fail "There's no image" unless @bitmap
   end
 end
